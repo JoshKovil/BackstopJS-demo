@@ -1,4 +1,16 @@
 {
+  "name": "automation-backstopJS",
+  "description": "A simple implementation of backstopJS for visual regression testing on static websites.",
+  "version": "1.0.0",
+  "author": "Josh Kovil <joshuakovil@gmail.com> (http://joshkovil.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshKovil/automation-backstopJS"
+  },
+  "scripts": {
+    "test:prod": "backstop test --config=backstop.js",
+    "lgtm:prod": "backstop reference --config=backstop.js"
+  },
   "dependencies": {
     "backstopjs": "^6.0.4"
   }
