@@ -6,10 +6,15 @@ const paths = [
     "/news/",
     "/about",
 ];
-
+const viewports = [
+    "mobile",
+    "tablet",
+    "desktop",
+];
 
 module.exports = {
     mainURL,
     projectID,
     paths,
+    viewports,
 };

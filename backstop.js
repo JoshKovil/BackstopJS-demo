@@ -1,7 +1,9 @@
 const constants = require("./constants.js");
-const delay = 5000;
+const delay = 0;
 const scenarios = [];
+const viewports = [];
 
+/*
 constants.paths.map(paths =>{ 
     scenarios.push ({
         label: paths,
@@ -23,21 +25,57 @@ constants.paths.map(paths =>{
         requireSameDimensions: true,
     });
 });
+*/
+
+constants.paths.map(paths => {
+    selectScenarios(paths);
+});
+
+constants.viewports.map(viewport => {
+    if (viewport === "mobile") {
+        selectViewports(viewport, 320, 480);
+      }
+      if (viewport === "tablet") {
+        selectViewports(viewport, 1024, 768);
+      }
+      if (viewport === "desktop") {
+        selectViewports(viewport, 1280, 1024);
+    }
+});
+
+function selectScenarios (paths) {
+    scenarios.push ({
+        label: paths,
+        cookiePath: "backstop_data/engine_scripts/cookies.json",
+        url: `${constants.mainURL}${paths}`,
+        referenceUrl: "",
+        readyEvent: "",
+        readySelector: "",
+        delay: delay,
+        hideSelectors: [],
+        removeSelectors: [],
+        hoverSelector: "",
+        clickSelector: "",
+        postInteractionWait: 0,
+        selectors: [],
+        selectorExpansion: true,
+        expect: 0,
+        misMatchThreshold: 0.1,
+        requireSameDimensions: true,
+    });
+}
+
+function selectViewports (viewport, width, height) {
+    viewports.push({
+        label: viewport,
+        width,
+        height,
+    });
+}
 
 module.exports = {
     id: constants.projectID,
-    viewports: [
-      {
-        label: "phone",
-        width: 320,
-        height: 480
-      },
-      {
-        label: "tablet",
-        width: 1024,
-        height: 768
-      }
-    ],
+    viewports,
     onBeforeScript: "puppet/onBefore.js",
     onReadyScript: "puppet/onReady.js",
     scenarios,
