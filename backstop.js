@@ -1,5 +1,31 @@
+const constants = require("./constants.js");
+const delay = 5000;
+const scenarios = [];
+
+constants.paths.map(paths =>{ 
+    scenarios.push ({
+        label: paths,
+        cookiePath: "backstop_data/engine_scripts/cookies.json",
+        url: `${constants.mainURL}${paths}`,
+        referenceUrl: "",
+        readyEvent: "",
+        readySelector: "",
+        delay: delay,
+        hideSelectors: [],
+        removeSelectors: [],
+        hoverSelector: "",
+        clickSelector: "",
+        postInteractionWait: 0,
+        selectors: [],
+        selectorExpansion: true,
+        expect: 0,
+        misMatchThreshold: 0.1,
+        requireSameDimensions: true,
+    });
+});
+
 module.exports = {
-    id: "backstop_default",
+    id: constants.projectID,
     viewports: [
       {
         label: "phone",
@@ -14,27 +40,7 @@ module.exports = {
     ],
     onBeforeScript: "puppet/onBefore.js",
     onReadyScript: "puppet/onReady.js",
-    scenarios: [
-      {
-        label: "BackstopJS Homepage",
-        cookiePath: "backstop_data/engine_scripts/cookies.json",
-        url: "https://garris.github.io/BackstopJS/",
-        referenceUrl: "",
-        readyEvent: "",
-        readySelector: "",
-        delay: 0,
-        hideSelectors: [],
-        removeSelectors: [],
-        hoverSelector: "",
-        clickSelector: "",
-        postInteractionWait: 0,
-        selectors: [],
-        selectorExpansion: true,
-        expect: 0,
-        misMatchThreshold: 0.1,
-        requireSameDimensions: true
-      }
-    ],
+    scenarios,
     paths: {
       bitmaps_reference: "backstop_data/bitmaps_reference",
       bitmaps_test: "backstop_data/bitmaps_test",
