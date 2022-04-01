@@ -1,35 +1,8 @@
 const constants = require("./constants.js");
-const delay = 0;
 const scenarios = [];
 const viewports = [];
 
-/*
-constants.paths.map(paths =>{ 
-    scenarios.push ({
-        label: paths,
-        cookiePath: "backstop_data/engine_scripts/cookies.json",
-        url: `${constants.mainURL}${paths}`,
-        referenceUrl: "",
-        readyEvent: "",
-        readySelector: "",
-        delay: delay,
-        hideSelectors: [],
-        removeSelectors: [],
-        hoverSelector: "",
-        clickSelector: "",
-        postInteractionWait: 0,
-        selectors: [],
-        selectorExpansion: true,
-        expect: 0,
-        misMatchThreshold: 0.1,
-        requireSameDimensions: true,
-    });
-});
-*/
-
-constants.paths.map(paths => {
-    selectScenarios(paths);
-});
+const milliSeconds = 3000; // adds delay for the screenshots
 
 constants.viewports.map(viewport => {
     if (viewport === "mobile") {
@@ -43,6 +16,18 @@ constants.viewports.map(viewport => {
     }
 });
 
+function selectViewports (viewport, width, height) {
+    viewports.push({
+        label: viewport,
+        width,
+        height,
+    });
+}
+
+constants.paths.map(paths => {
+    selectScenarios(paths);
+});
+
 function selectScenarios (paths) {
     scenarios.push ({
         label: paths,
@@ -51,7 +36,7 @@ function selectScenarios (paths) {
         referenceUrl: "",
         readyEvent: "",
         readySelector: "",
-        delay: delay,
+        delay: milliSeconds,
         hideSelectors: [],
         removeSelectors: [],
         hoverSelector: "",
