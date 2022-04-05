@@ -8,8 +8,8 @@
     "url": "https://github.com/JoshKovil/automation-backstopJS"
   },
   "scripts": {
-    "test:prod": "backstop test --config=backstop.js",
-    "lgtm:prod": "backstop reference --config=backstop.js"
+    "test:prod": "backstop test --config=backstop_config.js",
+    "lgtm:prod": "backstop reference --config=backstop_config.js"
   },
   "dependencies": {
     "backstopjs": "^6.0.4"
