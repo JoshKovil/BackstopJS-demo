@@ -22,8 +22,6 @@ const defaultTest = {
     "label": "",
     "url": arguements.testHost + '/',
     "referenceUrl": arguements.referenceHost + '/',
-    "hideSelectors": [],
-    "removeSelectors": [],
     "selectors": [],
     "readyEvent": null,
     "delay": 3000,
@@ -64,6 +62,7 @@ tests.forEach(test => {
     let scenario = new Object();
     scenario = Object.assign((defaultTest), test);
 
+    // TODO: remove all previous instances of selectors used (currently its being carried over to the next object)
     if (scenario.relativeUrl) {
         scenario.url = arguements.testHost + scenario.relativeUrl;
         scenario.referenceUrl = arguements.referenceHost + scenario.relativeUrl;
